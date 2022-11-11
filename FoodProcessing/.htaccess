@@ -1,0 +1,37 @@
+<IfModule mod_autoindex.c>
+
+RewriteEngine on
+RewriteRule ^(.*)\$ $1.php
+
+
+
+#RESTRICT FOLDERS FROM DIRECT ACCESS
+#deny from all
+
+#We can Rewrite index.php into index.html,index.asp,index.sri also
+RewriteEngine on
+RewriteRule ^(.*)\.aspx$ $1.php
+
+#DISABLE DIRECTORY LISTING
+Options -Indexes
+	
+# protect SystemServices.php
+ <files SystemServices.php>
+ order allow,deny
+ deny from all
+</files>
+ 
+# protect Users.php
+ <files Users.php>
+ order allow,deny
+ deny from all
+ </files>
+ 
+ # protect errors.log
+ <files errors.log>
+ order allow,deny
+ deny from all
+ </files>
+</IfModule>
+
+
